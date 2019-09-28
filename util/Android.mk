@@ -40,9 +40,11 @@ LOCAL_SRC_FILES:= \
 LOCAL_C_INCLUDES := \
         $(ROOT_PATH)/intl \
         $(ROOT_PATH)/include \
-        bionic/libc/private
-    
-LOCAL_CFLAGS := -DHAVE_CONFIG_H
+        bionic/libc/private \
+        bionic/libc/dns/include
+
+LOCAL_CFLAGS := -DHAVE_CONFIG_H \
+                -Wno-implicit-function-declaration
 
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libgpgutil
@@ -57,7 +59,8 @@ LOCAL_SRC_FILES:= \
 LOCAL_C_INCLUDES := \
         $(ROOT_PATH)/intl \
         $(ROOT_PATH)/include \
-        bionic/libc/private
+        bionic/libc/private \
+        bionic/libc/dns/include
 
 LOCAL_CFLAGS := -DHAVE_CONFIG_H
 

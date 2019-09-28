@@ -14,7 +14,7 @@ ifeq ($(TARGET_ARCH),x86)
 LOCAL_LDFLAGS += -Wl,--exclude-libs=libgcc_eh.a
 endif
 LOCAL_SRC_FILES:= ../../bionic/libdl/libdl.c
-LOCAL_MODULE:= libdl
+LOCAL_MODULE:= libdl-static
 LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 include $(BUILD_STATIC_LIBRARY)

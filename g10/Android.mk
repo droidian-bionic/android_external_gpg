@@ -82,7 +82,7 @@ LOCAL_CFLAGS := \
 LOCAL_CFLAGS += -DHAVE_CONFIG_H
 
 LOCAL_STATIC_LIBRARIES += libgpgcipher libgpgutil libgpgmpi libgpgintl libgpgcompat
-LOCAL_STATIC_LIBRARIES += libc libz libdl
+LOCAL_STATIC_LIBRARIES += libc libz libdl-static
 
 LOCAL_MODULE:= static_gpg
 LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES

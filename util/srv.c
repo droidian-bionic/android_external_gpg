@@ -31,6 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <resolv_private.h>
 #include "srv.h"
 
 /* Not every installation has gotten around to supporting SRVs
