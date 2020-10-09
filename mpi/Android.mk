@@ -31,7 +31,7 @@ LOCAL_SRC_FILES:= \
         generic/mpih-rshift.c \
         generic/mpih-sub1.c   
     
-LOCAL_CFLAGS := -DHAVE_CONFIG_H
+LOCAL_CFLAGS := -DHAVE_CONFIG_H -Wno-error
 	
 LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../include/ \

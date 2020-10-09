@@ -56,7 +56,7 @@ LOCAL_CFLAGS := \
 
 LOCAL_CFLAGS += -DINSTALLDIR=\"/system/lib\"
 LOCAL_CFLAGS += -Dset_relocation_prefix=libintl_set_relocation_prefix
-LOCAL_CFLAGS += -Drelocate=libintl_relocate \
+LOCAL_CFLAGS += -Drelocate=libintl_relocate -Wno-error
 
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libgpgintl

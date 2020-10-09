@@ -11,7 +11,6 @@ LOCAL_SRC_FILES:= \
         gpg.c \
         build-packet.c \
         compress.c \
-        filter.h \
         free-packet.c \
         getkey.c \
         keydb.c \
@@ -79,7 +78,7 @@ LOCAL_CFLAGS := \
         -DGNUPG_DATADIR="\"/share/gnupg\"" \
         -DGNUPG_LIBDIR="\"/sbin\""
 
-LOCAL_CFLAGS += -DHAVE_CONFIG_H
+LOCAL_CFLAGS += -DHAVE_CONFIG_H -Wno-error
 
 LOCAL_STATIC_LIBRARIES += libgpgcipher libgpgutil libgpgmpi libgpgintl libgpgcompat
 LOCAL_STATIC_LIBRARIES += libc libz libdl-static
@@ -92,4 +91,4 @@ LOCAL_MODULE_STEM := gpg
 LOCAL_FORCE_STATIC_EXECUTABLE := true
 LOCAL_MODULE_TAGS := optional
 
-include $(BUILD_EXECUTABLE)
+include $(BUILD_STATIC_EXECUTABLE)

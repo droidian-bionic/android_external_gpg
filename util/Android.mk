@@ -29,7 +29,6 @@ LOCAL_SRC_FILES:= \
         srv.c \
         assuan-buffer.c \
         assuan-client.c \
-        assuan-defs.h \
         assuan-errors.c \
         assuan-logging.c \
         assuan-socket-connect.c \
@@ -44,7 +43,9 @@ LOCAL_C_INCLUDES := \
         bionic/libc/dns/include
 
 LOCAL_CFLAGS := -DHAVE_CONFIG_H \
-                -Wno-implicit-function-declaration
+                -Wno-implicit-function-declaration \
+                -Wno-sign-compare \
+                -Wno-error
 
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libgpgutil
@@ -62,7 +63,7 @@ LOCAL_C_INCLUDES := \
         bionic/libc/private \
         bionic/libc/dns/include
 
-LOCAL_CFLAGS := -DHAVE_CONFIG_H
+LOCAL_CFLAGS := -DHAVE_CONFIG_H -Wno-sign-compare
 
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libgpgcompat
