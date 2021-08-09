@@ -1,0 +1,328 @@
+cc_defaults {
+    name: "gpg_defaults",
+
+    cflags: [
+        "-DHAVE_CONFIG_H",
+        "-Wno-error",
+    ],
+}
+
+cc_library_static {
+    name: "libgpgcipher",
+    recovery_available: true,
+    defaults: [
+        "gpg_defaults",
+    ],
+
+    cflags: [
+        "-DGNUPG_LIBDIR=\"/sbin\"",
+        "-Wno-error=pointer-bool-conversion",
+    ],
+
+    srcs: [
+        "cipher/blowfish.c",
+        "cipher/camellia.c",
+        "cipher/camellia-glue.c",
+        "cipher/cast5.c",
+        "cipher/cipher.c",
+        "cipher/dsa.c",
+        "cipher/des.c",
+        "cipher/dynload.c",
+        "cipher/elgamal.c",
+        "cipher/idea.c",
+        "cipher/md.c",
+        "cipher/md5.c",
+        "cipher/primegen.c",
+        "cipher/pubkey.c",
+        "cipher/random.c",
+        "cipher/rijndael.c",
+        "cipher/rmd160.c",
+        "cipher/rndlinux.c",
+        "cipher/rsa.c",
+        "cipher/sha1.c",
+        "cipher/sha256.c",
+        "cipher/sha512.c",
+        "cipher/smallprime.c",
+        "cipher/twofish.c",
+    ],
+
+    local_include_dirs: [
+        "include",
+        "intl",
+    ],
+}
+
+cc_library_static {
+    name: "libgpgcompat",
+    recovery_available: true,
+    defaults: [
+        "gpg_defaults",
+    ],
+
+    cflags: [
+        "-Wno-sign-compare",
+    ],
+
+    srcs: [
+        "util/compat.c",
+        "util/srv.c",
+    ],
+
+    local_include_dirs: [
+        "include",
+        "intl",
+    ],
+
+    include_dirs: [
+        "bionic/libc/dns/include",
+    ],
+}
+
+cc_library_static {
+    name: "libgpgintl",
+    recovery_available: true,
+    defaults: [
+        "gpg_defaults",
+    ],
+
+    cflags: [
+        "-DIN_LIBINTL",
+        "-DBUILDING_LIBINTL",
+        "-DBUILDING_DLL",
+        "-DIN_LIBRARY",
+        "-DNO_XMALLOC",
+        "-DLOCALEDIR=\"/share/locale\"",
+        "-DLOCALE_ALIAS_PATH=\"/share/locale\"",
+        "-DENABLE_RELOCATABLE=1",
+        "-DDEPENDS_ON_LIBICONV=1",
+        "-DLIBDIR=\"/sbin\"",
+        "-DINSTALLDIR=\"/system/lib\"",
+        "-Dset_relocation_prefix=libintl_set_relocation_prefix",
+        "-Drelocate=libintl_relocate",
+    ],
+
+    srcs: [
+        "intl/bindtextdom.c",
+        "intl/dcgettext.c",
+        "intl/dcigettext.c",
+        "intl/dcngettext.c",
+        "intl/dgettext.c",
+        "intl/dngettext.c",
+        "intl/explodename.c",
+        "intl/finddomain.c",
+        "intl/gettext.c",
+        "intl/hash-string.c",
+        "intl/intl-compat.c",
+        "intl/l10nflist.c",
+        "intl/langprefs.c",
+        "intl/loadmsgcat.c",
+        "intl/localcharset.c",
+        "intl/localealias.c",
+        "intl/localename.c",
+        "intl/lock.c",
+        "intl/log.c",
+        "intl/ngettext.c",
+        "intl/osdep.c",
+        "intl/plural.c",
+        "intl/plural-exp.c",
+        "intl/printf.c",
+        "intl/relocatable.c",
+        "intl/setlocale.c",
+        "intl/textdomain.c",
+        "intl/threadlib.c",
+        "intl/version.c",
+    ],
+
+    local_include_dirs: [
+        "include",
+    ],
+}
+
+cc_library_static {
+    name: "libgpgmpi",
+    recovery_available: true,
+    defaults: [
+        "gpg_defaults",
+    ],
+
+    srcs: [
+        "mpi/generic/mpih-add1.c",
+        "mpi/generic/mpih-lshift.c",
+        "mpi/generic/mpih-mul1.c",
+        "mpi/generic/mpih-mul2.c",
+        "mpi/generic/mpih-mul3.c",
+        "mpi/generic/mpih-rshift.c",
+        "mpi/generic/mpih-sub1.c",
+        "mpi/mpi-add.c",
+        "mpi/mpi-bit.c",
+        "mpi/mpi-cmp.c",
+        "mpi/mpi-div.c",
+        "mpi/mpi-gcd.c",
+        "mpi/mpi-inline.c",
+        "mpi/mpi-inv.c",
+        "mpi/mpi-mpow.c",
+        "mpi/mpi-mul.c",
+        "mpi/mpi-pow.c",
+        "mpi/mpi-scan.c",
+        "mpi/mpicoder.c",
+        "mpi/mpih-cmp.c",
+        "mpi/mpih-div.c",
+        "mpi/mpih-mul.c",
+        "mpi/mpiutil.c",
+    ],
+
+    local_include_dirs: [
+        "include",
+        "mpi",
+        "mpi/generic",
+    ],
+}
+
+cc_library_static {
+    name: "libgpgutil",
+    recovery_available: true,
+    defaults: [
+        "gpg_defaults",
+    ],
+
+    cflags: [
+        "-Wno-implicit-function-declaration",
+        "-Wno-sign-compare",
+    ],
+
+    srcs: [
+        "util/assuan-buffer.c",
+        "util/assuan-client.c",
+        "util/assuan-connect.c",
+        "util/assuan-errors.c",
+        "util/assuan-logging.c",
+        "util/assuan-socket-connect.c",
+        "util/assuan-socket.c",
+        "util/assuan-util.c",
+        "util/argparse.c",
+        "util/cert.c",
+        "util/compat.c",
+        "util/convert.c",
+        "util/dotlock.c",
+        "util/errors.c",
+        "util/estream-printf.c",
+        "util/fileutil.c",
+        "util/http.c",
+        "util/iobuf.c",
+        "util/logger.c",
+        "util/membuf.c",
+        "util/memory.c",
+        "util/miscutil.c",
+        "util/pka.c",
+        "util/secmem.c",
+        "util/srv.c",
+        "util/strgutil.c",
+        "util/ttyio.c",
+    ],
+
+    local_include_dirs: [
+        "include",
+        "intl",
+    ],
+
+    include_dirs: [
+        "bionic/libc/dns/include",
+    ],
+}
+
+cc_binary {
+    name: "gpg",
+    recovery: true,
+    defaults: [
+        "gpg_defaults",
+    ],
+
+    static_executable: true,
+
+    cflags: [
+        "-DGNUPG_DATADIR=\"/share/gnupg\"",
+        "-DGNUPG_LIBDIR=\"/sbin\"",
+        "-DGNUPG_LIBEXECDIR=\"/sbin\"",
+        "-DLOCALEDIR=\"/share/locale\"",
+    ],
+
+    srcs: [
+        "g10/apdu.c",
+        "g10/app-openpgp.c",
+        "g10/armor.c",
+        "g10/build-packet.c",
+        "g10/cardglue.c",
+        "g10/card-util.c",
+        "g10/ccid-driver.c",
+        "g10/cipher.c",
+        "g10/compress.c",
+        "g10/dearmor.c",
+        "g10/decrypt.c",
+        "g10/delkey.c",
+        "g10/encode.c",
+        "g10/encr-data.c",
+        "g10/exec.c",
+        "g10/export.c",
+        "g10/free-packet.c",
+        "g10/getkey.c",
+        "g10/gpg.c",
+        "g10/helptext.c",
+        "g10/import.c",
+        "g10/iso7816.c",
+        "g10/kbnode.c",
+        "g10/keydb.c",
+        "g10/keyedit.c",
+        "g10/keygen.c",
+        "g10/keyid.c",
+        "g10/keylist.c",
+        "g10/keyring.c",
+        "g10/keyserver.c",
+        "g10/mainproc.c",
+        "g10/mdfilter.c",
+        "g10/misc.c",
+        "g10/openfile.c",
+        "g10/parse-packet.c",
+        "g10/passphrase.c",
+        "g10/photoid.c",
+        "g10/pipemode.c",
+        "g10/pkclist.c",
+        "g10/plaintext.c",
+        "g10/progress.c",
+        "g10/pubkey-enc.c",
+        "g10/revoke.c",
+        "g10/seckey-cert.c",
+        "g10/seskey.c",
+        "g10/sig-check.c",
+        "g10/signal.c",
+        "g10/sign.c",
+        "g10/skclist.c",
+        "g10/status.c",
+        "g10/tdbdump.c",
+        "g10/tdbio.c",
+        "g10/textfilter.c",
+        "g10/tlv.c",
+        "g10/trustdb.c",
+        "g10/verify.c",
+    ],
+
+    local_include_dirs: [
+        "include",
+        "intl",
+    ],
+
+    include_dirs: [
+        "bionic/libc/dns/include",
+    ],
+
+    static_libs: [
+        "libc",
+        "libdl",
+        "libz",
+
+        "libgpgcipher",
+        "libgpgcompat",
+        "libgpgintl",
+        "libgpgmpi",
+        "libgpgutil",
+    ],
+}
