@@ -3,22 +3,6 @@
 LOCAL_PATH:=$(call my-dir)
 gpg_local_path := $(LOCAL_PATH)
 
-#
-# build static version of libdl from bionics
-#
-
-include $(CLEAR_VARS)
-LOCAL_LDFLAGS := -Wl,--exclude-libs=libgcc.a
-# for x86, exclude libgcc_eh.a for the same reasons as above
-ifeq ($(TARGET_ARCH),x86)
-LOCAL_LDFLAGS += -Wl,--exclude-libs=libgcc_eh.a
-endif
-LOCAL_SRC_FILES:= ../../bionic/libdl/libdl.cpp
-LOCAL_MODULE:= libdl-static
-LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
-LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
-include $(BUILD_STATIC_LIBRARY)
-
 # gpg
 include $(CLEAR_VARS)
 
